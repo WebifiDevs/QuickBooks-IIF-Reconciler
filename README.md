@@ -4,7 +4,7 @@ IIFReconciler is an automation tool designed to streamline the process of reconc
 
 ## Table of Contents
 
-- [IIFReconciler](#IIFReconciler)
+- [IIFReconciler](#iifreconciler)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Requirements](#requirements)
@@ -67,7 +67,7 @@ IIFReconciler is an automation tool designed to streamline the process of reconc
 
 1. Run the main script to start the extraction and matching process:
    ```bash
-   ./run_reconciliation.sh
+   ./run.sh
    ```
 2. The script will extract transactions from the PDFs and combine them into a single CSV file for matching.
 
@@ -105,7 +105,7 @@ IIFReconciler/
 ├── generate_report.py              # Script for generating reconciliation report
 ├── generate_iif.py                 # Script for generating IIF file from unmatched transactions
 ├── match_transactions.py           # Script for matching transactions between bank and QuickBooks
-├── run_reconciliation.sh           # Main bash script to run the entire reconciliation process
+├── run.sh           # Main bash script to run the entire reconciliation process
 ├── requirements.txt                # Required Python libraries
 └── README.md                       # Project documentation
 ```
