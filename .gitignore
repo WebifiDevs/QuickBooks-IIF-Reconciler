@@ -23,8 +23,7 @@ var/
 /output_files/
 
 # QuickBooks Company Files
-/company_files/
-/company_files/Webify_Services_LTD.QBB
+company_files/
 
 # PDF Bank Statements
 /bank_statements/
