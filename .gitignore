@@ -24,6 +24,7 @@ var/
 
 # QuickBooks Company Files
 /company_files/
+/company_files/Webify_Services_LTD.QBB
 
 # PDF Bank Statements
 /bank_statements/
