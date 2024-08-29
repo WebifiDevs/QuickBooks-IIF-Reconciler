@@ -52,6 +52,12 @@ AutoReconcile is an automation tool designed to streamline the process of reconc
    pip install -r requirements.txt
    ```
 
+4. **Create Required Directories**:
+   - Since the `.gitignore` file is set to ignore empty directories, you need to manually create the required directories:
+   ```bash
+   mkdir -p bank_statements company_file output_files
+   ```
+
 ## Usage
 
 ### Step 1: Extract Transactions
@@ -86,9 +92,9 @@ AutoReconcile is an automation tool designed to streamline the process of reconc
 ```
 AutoReconcile/
 │
-├── bank_statements/                # Directory for bank statement PDFs
-├── company_file/                   # Directory for QuickBooks PDFs and other files
-├── output_files/                   # Directory for generated CSVs, reports, and IIF files
+├── bank_statements/                # Directory for bank statement PDFs (create manually)
+├── company_file/                   # Directory for QuickBooks PDFs and other files (create manually)
+├── output_files/                   # Directory for generated CSVs, reports, and IIF files (create manually)
 │   ├── bank_transactions.csv       # Extracted bank transactions
 │   ├── quickbooks_transactions.csv # Extracted QuickBooks transactions
 │   ├── reconciliation_matches.csv  # Matched transactions
@@ -112,5 +118,4 @@ Contributions are welcome! Please feel free to submit a Pull Request or raise an
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-
+This project is licensed under the MIT License.
