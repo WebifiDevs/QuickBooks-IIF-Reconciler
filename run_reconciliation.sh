@@ -40,19 +40,22 @@ echo "Preliminary reconciliation report generated at ./output_files/reconciliati
 echo "Please review the report before proceeding."
 
 # Ask the user if they want to proceed with the reconciliation
-read -p "Do you want to proceed with reconciling transactions in QuickBooks? (yes/no): " user_choice
+read -p "Do you want to proceed with generating an IIF file for QuickBooks import? (yes/no): " user_choice
 
 if [[ "$user_choice" != "yes" ]]; then
     echo "Reconciliation process aborted by the user."
     exit 0
 fi
 
-# Step 4: Reconcile transactions in QuickBooks
-echo "Step 4: Reconciling transactions in QuickBooks..."
-python reconcile_quickbooks.py "./company_file/Webify_Services_LTD.QBB" "./output_files/reconciliation_matches.csv"
+# Step 4: Generate IIF file for QuickBooks import
+echo "Step 4: Generating IIF file for QuickBooks import..."
+python generate_iif.py "./output_files/reconciliation_unmatched_bank.csv" "./output_files/reconciliation_unmatched_qb.csv" "./output_files/reconciliation_import.iif"
 if [ $? -ne 0 ]; then
-    echo "Failed to reconcile transactions in QuickBooks."
+    echo "Failed to generate IIF file."
     exit 1
 fi
+
+echo "IIF file generated: ./output_files/reconciliation_import.iif"
+echo "You can now import this file into QuickBooks to complete the reconciliation process."
 
 echo "Reconciliation process completed successfully."
