@@ -30,8 +30,10 @@ def extract_transactions_from_pdf(pdf_file, output_file):
     print(f"Transactions extracted and saved to {output_file}")
 
 if __name__ == "__main__":
-    # Extract transactions from the bank statement PDF
-    extract_transactions_from_pdf("./bank_statements/January_2024.pdf", "./output_files/bank_transactions.csv")
-    
+    # Extract transactions from multiple bank statements for stress testing
+    months = ["January", "February", "March", "April", "May", "June", "July"]
+    for month in months:
+        extract_transactions_from_pdf(f"./bank_statements/{month}_2024.pdf", f"./output_files/bank_transactions_{month}.csv")
+
     # Extract transactions from the QuickBooks Transaction List by Date PDF
     extract_transactions_from_pdf("./company_file/Transaction_List_By_Date.pdf", "./output_files/quickbooks_transactions.csv")

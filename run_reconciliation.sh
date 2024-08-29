@@ -4,13 +4,18 @@
 WORKING_DIR="$(pwd)"  # Sets the working directory to the current directory
 cd "$WORKING_DIR"
 
-# Step 1: Extract transactions from PDF bank statement January_2024.pdf
-echo "Step 1: Extracting transactions from bank statement PDF..."
-python extract_transactions.py "./bank_statements/January_2024.pdf" "./output_files/bank_transactions.csv"
-if [ $? -ne 0 ]; then
-    echo "Failed to extract transactions from PDF."
-    exit 1
-fi
+# Define an array of months for January to July
+months=("January" "February" "March" "April" "May" "June" "July")
+
+for month in "${months[@]}"; do
+    # Step 1: Extract transactions from the PDF bank statement for each month
+    echo "Step 1: Extracting transactions from bank statement PDF for $month 2024..."
+    python extract_transactions.py "./bank_statements/${month}_2024.pdf" "./output_files/bank_transactions_${month}.csv"
+    if [ $? -ne 0 ]; then
+        echo "Failed to extract transactions from $month 2024 PDF."
+        exit 1
+    fi
+done
 
 # Step 2: Extract transactions from QuickBooks Transaction List by Date PDF
 echo "Step 2: Extracting transactions from QuickBooks Transaction List by Date PDF..."
@@ -20,15 +25,23 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-# Step 3: Match transactions
-echo "Step 3: Matching transactions..."
-python match_transactions.py "./output_files/bank_transactions.csv" "./output_files/quickbooks_transactions.csv" "./output_files/reconciliation"
+# Step 3: Combine all bank transactions into one file for matching
+echo "Step 3: Combining all bank transactions into a single file..."
+cat ./output_files/bank_transactions_*.csv > ./output_files/bank_transactions_combined.csv
+if [ $? -ne 0 ]; then
+    echo "Failed to combine bank transactions."
+    exit 1
+fi
+
+# Step 4: Match transactions
+echo "Step 4: Matching transactions..."
+python match_transactions.py "./output_files/bank_transactions_combined.csv" "./output_files/quickbooks_transactions.csv" "./output_files/reconciliation"
 if [ $? -ne 0 ]; then
     echo "Failed to match transactions."
     exit 1
 fi
 
-# Step 3.5: Generate a preliminary report and ask user to proceed
+# Step 4.5: Generate a preliminary report and ask user to proceed
 echo "Generating preliminary reconciliation report..."
 python generate_report.py "./output_files/reconciliation_matches.csv" "./output_files/reconciliation_unmatched_bank.csv" "./output_files/reconciliation_unmatched_qb.csv" "./output_files/reconciliation_report.xlsx"
 if [ $? -ne 0 ]; then
@@ -47,8 +60,8 @@ if [[ "$user_choice" != "yes" ]]; then
     exit 0
 fi
 
-# Step 4: Generate IIF file for QuickBooks import
-echo "Step 4: Generating IIF file for QuickBooks import..."
+# Step 5: Generate IIF file for QuickBooks import
+echo "Step 5: Generating IIF file for QuickBooks import..."
 python generate_iif.py "./output_files/reconciliation_unmatched_bank.csv" "./output_files/reconciliation_unmatched_qb.csv" "./output_files/reconciliation_import.iif"
 if [ $? -ne 0 ]; then
     echo "Failed to generate IIF file."
