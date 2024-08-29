@@ -10,5 +10,5 @@ def load_quickbooks_transactions(csv_file, output_file):
 
 if __name__ == "__main__":
     # Update the path to match where you'll place the exported CSV file
-    load_quickbooks_transactions("./quickbooks_company_files/Transaction_List_By_Date.csv", "./output_files/quickbooks_transactions.csv")
+    load_quickbooks_transactions("./company_file/Transaction_List_By_Date.csv", "./output_files/quickbooks_transactions.csv")
 

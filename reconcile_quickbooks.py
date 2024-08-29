@@ -16,4 +16,4 @@ def reconcile_transactions_in_quickbooks(qbw_file, matched_file):
     print("Reconciliation completed in QuickBooks")
 
 if __name__ == "__main__":
-    reconcile_transactions_in_quickbooks("./quickbooks_company_files/Webify_Services_LTD.qbb", "./output_files/reconciliation_matches.csv")
+    reconcile_transactions_in_quickbooks("./company_file/Webify_Services_LTD.qbb", "./output_files/reconciliation_matches.csv")

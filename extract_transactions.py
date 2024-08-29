@@ -9,8 +9,8 @@ def extract_transactions_from_pdf(pdf_file, output_file):
             lines = text.split('\n')
             for line in lines:
                 parts = line.split(',')
-                if len(parts) == 3:
-                    date, description, amount = parts
+                if len(parts) >= 3:
+                    date, description, amount = parts[0], parts[1], parts[-1]
                     amount = amount.replace(',', '').replace('.', '', amount.count('.') - 1).strip()
                     try:
                         transactions.append({
@@ -30,4 +30,8 @@ def extract_transactions_from_pdf(pdf_file, output_file):
     print(f"Transactions extracted and saved to {output_file}")
 
 if __name__ == "__main__":
-    extract_transactions_from_pdf("./bank_statements/1JAN_2024_statements-2063-.pdf", "./output_files/bank_transactions.csv")
+    # Extract transactions from the bank statement PDF
+    extract_transactions_from_pdf("./bank_statements/January_2024.pdf", "./output_files/bank_transactions.csv")
+    
+    # Extract transactions from the QuickBooks Transaction List by Date PDF
+    extract_transactions_from_pdf("./company_file/Transaction_List_By_Date.pdf", "./output_files/quickbooks_transactions.csv")

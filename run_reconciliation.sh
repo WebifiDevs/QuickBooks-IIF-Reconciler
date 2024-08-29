@@ -4,19 +4,19 @@
 WORKING_DIR="$(pwd)"  # Sets the working directory to the current directory
 cd "$WORKING_DIR"
 
-# Step 1: Extract transactions from PDF bank statement
-echo "Step 1: Extracting transactions from PDF..."
-python extract_transactions.py "./bank_statements/1JAN_2024_statements-2063-.pdf" "./output_files/bank_transactions.csv"
+# Step 1: Extract transactions from PDF bank statement January_2024.pdf
+echo "Step 1: Extracting transactions from bank statement PDF..."
+python extract_transactions.py "./bank_statements/January_2024.pdf" "./output_files/bank_transactions.csv"
 if [ $? -ne 0 ]; then
     echo "Failed to extract transactions from PDF."
     exit 1
 fi
 
-# Step 2: Load QuickBooks transactions from CSV
-echo "Step 2: Loading QuickBooks transactions from CSV..."
-python load_quickbooks_transactions.py "./quickbooks_company_files/Transaction_List_By_Date.csv" "./output_files/quickbooks_transactions.csv"
+# Step 2: Extract transactions from QuickBooks Transaction List by Date PDF
+echo "Step 2: Extracting transactions from QuickBooks Transaction List by Date PDF..."
+python extract_transactions.py "./company_file/Transaction_List_By_Date.pdf" "./output_files/quickbooks_transactions.csv"
 if [ $? -ne 0 ]; then
-    echo "Failed to load QuickBooks transactions."
+    echo "Failed to extract transactions from QuickBooks PDF."
     exit 1
 fi
 
