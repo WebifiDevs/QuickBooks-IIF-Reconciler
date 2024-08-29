@@ -1,6 +1,6 @@
 # AutoReconcile
 
-AutoReconcile is an automation tool designed to streamline the process of reconciling bank transactions with QuickBooks records. It extracts transactions from PDF files, matches them, and generates an IIF file for easy import into QuickBooks, facilitating seamless reconciliation.
+AutoReconcile is an automation tool designed to streamline the process of reconciling bank transactions with QuickBooks records. It extracts transactions from PDF files, matches them, and generates an .iif (`Intuit Interchange Format`) file for easy import into QuickBooks, facilitating seamless reconciliation.
 
 ## Table of Contents
 
