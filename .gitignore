@@ -28,6 +28,9 @@ var/
 # PDF Bank Statements
 /bank_statements/
 
+# QB Company Files
+/company_files/
+
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
