@@ -23,13 +23,10 @@ var/
 /output_files/
 
 # QuickBooks Company Files
-/quickbooks_company_files/
+/company_files/
 
 # PDF Bank Statements
 /bank_statements/
-
-# QB Company Files
-/company_files/
 
 # Installer logs
 pip-log.txt
