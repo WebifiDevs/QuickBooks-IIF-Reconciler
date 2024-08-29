@@ -7,6 +7,9 @@ cd "$WORKING_DIR"
 # Define an array of months for January to July
 months=("January" "February" "March" "April" "May" "June" "July")
 
+# Create output_files directory if not exists
+mkdir -p output_files
+
 for month in "${months[@]}"; do
     # Step 1: Extract transactions from the PDF bank statement for each month
     echo "Step 1: Extracting transactions from bank statement PDF for $month 2024..."
@@ -27,11 +30,20 @@ fi
 
 # Step 3: Combine all bank transactions into one file for matching
 echo "Step 3: Combining all bank transactions into a single file..."
-cat ./output_files/bank_transactions_*.csv > ./output_files/bank_transactions_combined.csv
+cat ./output_files/bank_transactions_*.csv > ./output_files/bank_transactions_combined_temp.csv
 if [ $? -ne 0 ]; then
     echo "Failed to combine bank transactions."
     exit 1
 fi
+
+# Rename the temporary combined file to the final output file
+mv ./output_files/bank_transactions_combined_temp.csv ./output_files/bank_transactions_combined.csv
+if [ $? -ne 0 ]; then
+    echo "Failed to rename combined transactions file."
+    exit 1
+fi
+
+echo "Combined transactions saved to ./output_files/bank_transactions_combined.csv"
 
 # Step 4: Match transactions
 echo "Step 4: Matching transactions..."

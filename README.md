@@ -16,8 +16,6 @@ AutoReconcile is an automation tool designed to streamline the process of reconc
     - [Step 4: Generate IIF File](#step-4-generate-iif-file)
     - [Step 5: Import IIF into QuickBooks](#step-5-import-iif-into-quickbooks)
   - [Project Structure](#project-structure)
-  - [Contributing](#contributing)
-  - [License](#license)
 
 ## Features
 
@@ -62,7 +60,7 @@ AutoReconcile is an automation tool designed to streamline the process of reconc
 
 ### Step 1: Extract Transactions
 
-1. Place the bank statement PDF in the `bank_statements/` directory.
+1. Place the bank statement PDF files in the `bank_statements/` directory.
 2. Place the QuickBooks `Transaction List by Date` PDF in the `company_file/` directory.
 
 ### Step 2: Match Transactions
@@ -71,11 +69,11 @@ AutoReconcile is an automation tool designed to streamline the process of reconc
    ```bash
    ./run_reconciliation.sh
    ```
-2. Review the preliminary report generated in the `output_files/` directory.
+2. The script will extract transactions from the PDFs and combine them into a single CSV file for matching.
 
 ### Step 3: Generate Report
 
-1. The script will generate a detailed reconciliation report showing matched and unmatched transactions.
+1. The script will generate a detailed reconciliation report showing matched and unmatched transactions, saved in the `output_files/` directory.
 
 ### Step 4: Generate IIF File
 
@@ -95,13 +93,13 @@ AutoReconcile/
 ├── bank_statements/                # Directory for bank statement PDFs (create manually)
 ├── company_file/                   # Directory for QuickBooks PDFs and other files (create manually)
 ├── output_files/                   # Directory for generated CSVs, reports, and IIF files (create manually)
-│   ├── bank_transactions.csv       # Extracted bank transactions
-│   ├── quickbooks_transactions.csv # Extracted QuickBooks transactions
-│   ├── reconciliation_matches.csv  # Matched transactions
+│   ├── bank_transactions_combined.csv # Combined bank transactions file
+│   ├── quickbooks_transactions.csv    # Extracted QuickBooks transactions
+│   ├── reconciliation_matches.csv     # Matched transactions
 │   ├── reconciliation_unmatched_bank.csv # Unmatched bank transactions
 │   ├── reconciliation_unmatched_qb.csv   # Unmatched QuickBooks transactions
-│   ├── reconciliation_report.xlsx  # Reconciliation report
-│   ├── reconciliation_import.iif   # Generated IIF file for QuickBooks import
+│   ├── reconciliation_report.xlsx     # Reconciliation report
+│   ├── reconciliation_import.iif      # Generated IIF file for QuickBooks import
 │
 ├── extract_transactions.py         # Script for extracting transactions from PDFs
 ├── generate_report.py              # Script for generating reconciliation report
@@ -111,11 +109,3 @@ AutoReconcile/
 ├── requirements.txt                # Required Python libraries
 └── README.md                       # Project documentation
 ```
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request or raise an issue to discuss any improvements or bug fixes.
-
-## License
-
-This project is licensed under the MIT License.
