@@ -1,10 +1,10 @@
-# IIFReconciler
+# QuickBooks-IIF-Reconciler
 
-IIFReconciler is an automation tool designed to streamline the process of reconciling bank transactions with QuickBooks records. It extracts transactions from PDF files, matches them, and generates an .iif (`Intuit Interchange Format`) file for easy import into QuickBooks, facilitating seamless reconciliation.
+QuickBooks-IIF-Reconciler is an automation tool designed to streamline the process of reconciling bank transactions with QuickBooks records. It extracts transactions from PDF files, matches them, and generates an .iif (`Intuit Interchange Format`) file for easy import into QuickBooks, facilitating seamless reconciliation.
 
 ## Table of Contents
 
-- [IIFReconciler](#iifreconciler)
+- [QuickBooks-IIF-Reconciler](#QuickBooks-IIF-Reconciler)
   - [Table of Contents](#table-of-contents)
   - [Features](#features)
   - [Requirements](#requirements)
@@ -35,8 +35,8 @@ IIFReconciler is an automation tool designed to streamline the process of reconc
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/yourusername/IIFReconciler.git
-   cd IIFReconciler
+   git clone https://github.com/yourusername/QuickBooks-IIF-Reconciler.git
+   cd QuickBooks-IIF-Reconciler
    ```
 
 2. **Create a Virtual Environment** (optional but recommended):
@@ -88,7 +88,7 @@ IIFReconciler is an automation tool designed to streamline the process of reconc
 ## Project Structure
 
 ```
-IIFReconciler/
+QuickBooks-IIF-Reconciler/
 │
 ├── bank_statements/                # Directory for bank statement PDFs (create manually)
 ├── company_file/                   # Directory for QuickBooks PDFs and other files (create manually)
